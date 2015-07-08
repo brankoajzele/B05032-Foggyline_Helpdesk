@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../Magento/Store/etc/config.xsd">
+    <default>
+        <foggyline_helpdesk>
+            <email_template>
+                <customer>foggyline_helpdesk_email_template_customer</customer>
+                <store_owner>foggyline_helpdesk_email_template_store_owner</store_owner>
+            </email_template>
+        </foggyline_helpdesk>
+    </default>
+</config>

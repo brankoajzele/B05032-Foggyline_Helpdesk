@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="foggyline" translate="label" sortOrder="200">
+            <label>Foggyline</label>
+        </tab>
+        <section id="foggyline_helpdesk" translate="label" type="text" sortOrder="110" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Helpdesk</label>
+            <tab>foggyline</tab>
+            <resource>Foggyline_Helpdesk::helpdesk</resource>
+            <group id="email_template" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Email Template Options</label>
+                <field id="customer" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Store Owner to Customer Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="store_owner" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Customer to Store Owner Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

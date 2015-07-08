@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../Magento/Email/etc/email_templates.xsd">
+    <template id="foggyline_helpdesk_email_template_customer" label="Foggyline Helpdesk - Customer Email"
+              file="store_owner_to_customer.html" type="html" module="Foggyline_Helpdesk"/>
+    <template id="foggyline_helpdesk_email_template_store_owner" label="Foggyline Helpdesk - Store Owner Email"
+              file="customer_to_store_owner.html" type="html" module="Foggyline_Helpdesk"/>
+</config>
