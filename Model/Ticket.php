@@ -33,7 +33,30 @@ class Ticket extends \Magento\Framework\Model\AbstractModel
 
     public static function getSeveritiesOptionArray()
     {
-        return self::$severitiesOptions;
+        $result = [];
+
+        foreach (self::$severitiesOptions as $value => $label) {
+            $result[] = [
+                'label' => $label,
+                'value' => $value
+            ];
+        }
+
+        return $result;
+    }
+
+    public static function getStatusesOptionArray()
+    {
+        $result = [];
+
+        foreach (self::$statusesOptions as $value => $label) {
+            $result[] = [
+                'label' => $label,
+                'value' => $value
+            ];
+        }
+
+        return $result;
     }
 
     public function getStatusAsLabel()

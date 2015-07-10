@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="formkey"/>
+    <update handle="foggyline_helpdesk_ticket_grid_block"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Foggyline\Helpdesk\Block\Adminhtml\Ticket" name="admin.block.helpdesk.ticket.grid.container">
+        </block>
+        </referenceContainer>
+    </body>
+</page>

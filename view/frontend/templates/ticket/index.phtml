@@ -24,8 +24,8 @@
                 <label class="label" for="severity"><span><?php echo __('Severity') ?></span></label>
                 <div class="control">
                     <select name="severity">
-                        <?php foreach ($block->getSeverities() as $value=>$name): ?>
-                            <option value="<?php echo $value ?>"><?php echo $this->escapeHtml($name ) ?></option>
+                        <?php foreach ($block->getSeverities() as $severity): ?>
+                            <option value="<?php echo $severity['value'] ?>"><?php echo $this->escapeHtml($severity['label']) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

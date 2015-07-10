@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Foggyline_Helpdesk::ticket_manage" title="Helpdesk Tickets" module="Foggyline_Helpdesk" parent="Magento_Customer::customer" sortOrder="93" action="foggyline_helpdesk/ticket/index" resource="Foggyline_Helpdesk::ticket_manage"/>
+    </menu>
+</config>

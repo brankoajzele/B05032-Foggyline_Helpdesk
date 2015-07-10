@@ -5,6 +5,9 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
+                <resource id="Magento_Customer::customer" title="Customers" sortOrder="40">
+                    <resource id="Foggyline_Helpdesk::ticket_manage" title="Manage Helpdesk Tickets" sortOrder="93"/>
+                </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
