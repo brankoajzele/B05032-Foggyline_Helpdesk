@@ -1,12 +1,12 @@
 <!--@subject Ticket Updated @-->
-<h1>Ticket #{{var ticket_id}} updated</h1>
+<h1>Ticket #{{var ticket.ticket_id}} updated</h1>
 
 <p>Hi {{var customer_name}}.</p>
 
-<p>Status of your ticket #{{var ticket_id}} has been updated</p>
+<p>Status of your ticket #{{var ticket.ticket_id}} has been updated</p>
 
 <ul>
-    <li>Title: {{var title}}</li>
-    <li>Created_at: {{var created_at}}</li>
-    <li>Severity: {{var severity}}</li>
+    <li>Title: {{var ticket.title}}</li>
+    <li>Created_at: {{var ticket.created_at}}</li>
+    <li>Severity: {{var ticket.severity}}</li>
 </ul>

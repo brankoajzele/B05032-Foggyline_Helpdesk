@@ -1,0 +1,77 @@
+<?php /** @var $this Foggyline\Helpdesk\Block\Ticket\Index */ ?>
+<?php /** @var $block Foggyline\Helpdesk\Block\Ticket\Index */ ?>
+<?php $tickets = $block->getTickets() ?>
+<div class="foggyline-helpdesk-ticket-index">
+    <form
+        id="form-validate"
+        action="<?php echo $block->getUrl('foggyline_helpdesk/ticket/save') ?>"
+        method="post">
+        <?php echo $block->getBlockHtml('formkey') ?>
+        <fieldset class="fieldset">
+            <div class="field title required">
+                <label class="label" for="title"><span><?php echo __('Title') ?></span></label>
+                <div class="control">
+                    <input
+                        id="title"
+                        type="text"
+                        name="title"
+                        data-validate="{required:true}"
+                        value=""
+                        placeholder="<?php echo __('Something descriptive') ?>" />
+                </div>
+            </div>
+            <div class="field severity">
+                <label class="label" for="severity"><span><?php echo __('Severity') ?></span></label>
+                <div class="control">
+                    <select name="severity">
+                        <?php foreach ($block->getSeverities() as $value=>$name): ?>
+                            <option value="<?php echo $value ?>"><?php echo $this->escapeHtml($name ) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action save primary">
+                    <span><?php echo __('Submit Ticket') ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        require([
+            'jquery',
+            'mage/mage'
+        ], function($){
+            var dataForm = $('#form-validate');
+            dataForm.mage('validation', {});
+        });
+    </script>
+
+    <?php if ($tickets->count()): ?>
+        <table class="data-grid">
+            <thead>
+            <tr>
+                <th><?php echo __('ID') ?></th>
+                <th><?php echo __('Title') ?></th>
+                <th><?php echo __('Created At') ?></th>
+                <th><?php echo __('Severity') ?></th>
+                <th><?php echo __('Status') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($tickets as $ticket): ?>
+                <tr>
+                    <td><?php echo $ticket->getId() ?></td>
+                    <td><?php echo $block->escapeHtml($ticket->getTitle()) ?></td>
+                    <td><?php echo $ticket->getCreatedAt() ?></td>
+                    <td><?php echo $ticket->getSeverityAsLabel() ?></td>
+                    <td><?php echo $ticket->getStatusAsLabel() ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</div>
