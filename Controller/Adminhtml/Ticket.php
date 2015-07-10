@@ -39,7 +39,6 @@ class Ticket extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return true;
         return $this->_authorization->isAllowed('Foggyline_Helpdesk::ticket_manage');
     }
 

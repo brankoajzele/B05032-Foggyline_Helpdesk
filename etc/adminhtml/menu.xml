@@ -2,6 +2,18 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
     <menu>
-        <add id="Foggyline_Helpdesk::ticket_manage" title="Helpdesk Tickets" module="Foggyline_Helpdesk" parent="Magento_Customer::customer" sortOrder="93" action="foggyline_helpdesk/ticket/index" resource="Foggyline_Helpdesk::ticket_manage"/>
+        <!--
+            the "resource" attribute merely shows/hides item from menu based on role permissions assigned to user
+             it does not prevent logged in user directly punching in url in the browser if it can guess the security key
+             of if the key is turned off
+
+             for controlling access to controller or controller action, special "protected function _isAllowed()" is needed,
+             like:
+                        protected function _isAllowed()
+                        {
+                            return $this->_authorization->isAllowed('Foggyline_Helpdesk::ticket_manage');
+                        }
+        -->
+        <add id="Foggyline_Helpdesk::ticket_manage" title="Helpdesk Tickets" module="Foggyline_Helpdesk" parent="Magento_Customer::customer" action="foggyline_helpdesk/ticket/index" resource="Foggyline_Helpdesk::ticket_manage"/>
     </menu>
 </config>
