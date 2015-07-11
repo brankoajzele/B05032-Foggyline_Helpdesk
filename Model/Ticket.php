@@ -11,12 +11,12 @@ class Ticket extends \Magento\Framework\Model\AbstractModel
     const SEVERITY_MEDIUM = 2;
     const SEVERITY_HIGH = 3;
 
-    protected static $statusesOptions = [
+    public static $statusesOptions = [
         self::STATUS_OPENED => 'Opened',
         self::STATUS_CLOSED => 'Closed',
     ];
 
-    protected static $severitiesOptions = [
+    public static $severitiesOptions = [
         self::SEVERITY_LOW => 'Low',
         self::SEVERITY_MEDIUM => 'Medium',
         self::SEVERITY_HIGH => 'High',
