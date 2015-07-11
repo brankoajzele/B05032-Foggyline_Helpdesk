@@ -55,28 +55,28 @@ class Save extends \Foggyline\Helpdesk\Controller\Ticket
             $ticket->setStatus(\Foggyline\Helpdesk\Model\Ticket::STATUS_OPENED);
             $ticket->save();
 
-//            $customer = $this->customerSession->getCustomerData();
-//
-//            /* Send email to store owner */
-//            $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
-//            $transport = $this->transportBuilder
-//                ->setTemplateIdentifier($this->scopeConfig->getValue('foggyline_helpdesk/email_template/store_owner', $storeScope))
-//                ->setTemplateOptions(
-//                    [
-//                        'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
-//                        'store' => $this->storeManager->getStore()->getId(),
-//                    ]
-//                )
-//                ->setTemplateVars(['ticket' => $ticket])
-//                ->setFrom([
-//                    'name' => $customer->getFirstname() . ' ' . $customer->getLastname(),
-//                    'email' => $customer->getEmail()
-//                ])
-//                ->addTo($this->scopeConfig->getValue('trans_email/ident_general/email', $storeScope))
-//                ->getTransport();
-//
-//            $transport->sendMessage();
-//            $this->inlineTranslation->resume();
+            $customer = $this->customerSession->getCustomerData();
+
+            /* Send email to store owner */
+            $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+            $transport = $this->transportBuilder
+                ->setTemplateIdentifier($this->scopeConfig->getValue('foggyline_helpdesk/email_template/store_owner', $storeScope))
+                ->setTemplateOptions(
+                    [
+                        'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+                        'store' => $this->storeManager->getStore()->getId(),
+                    ]
+                )
+                ->setTemplateVars(['ticket' => $ticket])
+                ->setFrom([
+                    'name' => $customer->getFirstname() . ' ' . $customer->getLastname(),
+                    'email' => $customer->getEmail()
+                ])
+                ->addTo($this->scopeConfig->getValue('trans_email/ident_general/email', $storeScope))
+                ->getTransport();
+
+            $transport->sendMessage();
+            $this->inlineTranslation->resume();
 
             $this->messageManager->addSuccess(__('Ticket successfully created.'));
         } catch (Exception $e) {

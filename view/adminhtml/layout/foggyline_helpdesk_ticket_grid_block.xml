@@ -13,7 +13,6 @@
                     <argument name="save_parameters_in_session" xsi:type="boolean">true</argument>
                     <argument name="use_ajax" xsi:type="boolean">true</argument>
                 </arguments>
-
                 <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="admin.block.helpdesk.ticket.grid.columnSet" as="grid.columnSet">
 
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="ticket_id">
@@ -24,7 +23,6 @@
                             <argument name="index" xsi:type="string">ticket_id</argument>
                         </arguments>
                     </block>
-
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="title">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Title</argument>
@@ -33,8 +31,6 @@
                             <argument name="index" xsi:type="string">title</argument>
                         </arguments>
                     </block>
-
-
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="severity">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Severity</argument>
@@ -46,7 +42,6 @@
                             <argument name="column_css_class" xsi:type="string">ccol-form_id</argument>
                         </arguments>
                     </block>
-
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="status">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Status</argument>
@@ -58,7 +53,6 @@
                             <argument name="column_css_class" xsi:type="string">ccol-form_id</argument>
                         </arguments>
                     </block>
-
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="action">
                         <arguments>
                             <argument name="id" xsi:type="string">action</argument>
@@ -80,7 +74,6 @@
                             <argument name="column_css_class" xsi:type="string">col-actions</argument>
                         </arguments>
                     </block>
-
                 </block>
             </block>
         </referenceBlock>
