@@ -42,11 +42,7 @@ class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
                 $ticket->setStatus(\Foggyline\Helpdesk\Model\Ticket::STATUS_CLOSED);
                 $ticket->save();
                 $this->messageManager->addSuccess(__('Ticket successfully closed.'));
-            } catch (Exception $e) {
-                $this->messageManager->addError(__('Error closing ticket.'));
-            }
 
-            try {
                 /* Send email to store owner */
                 $customer = $this->customerSession->getCustomerData();
                 $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
@@ -54,7 +50,7 @@ class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
                     ->setTemplateIdentifier($this->scopeConfig->getValue('foggyline_helpdesk/email_template/customer', $storeScope))
                     ->setTemplateOptions(
                         [
-                            'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
+                            'area' => \Magento\Framework\App\Area::AREA_ADMIN,
                             'store' => $this->storeManager->getStore()->getId(),
                         ]
                     )
@@ -70,8 +66,10 @@ class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
                     ->getTransport();
                 $transport->sendMessage();
                 $this->inlineTranslation->resume();
+                $this->messageManager->addSuccess(__('Customer notified via email.'));
+
             } catch (Exception $e) {
-                $this->messageManager->addError(__('Error sending email to customer.'));
+                $this->messageManager->addError(__('Error with closing ticket action.'));
             }
         }
 
