@@ -2,7 +2,7 @@
 
 namespace Foggyline\Helpdesk\Controller\Adminhtml;
 
-class Ticket extends \Magento\Backend\App\Action
+abstract class Ticket extends \Magento\Backend\App\Action
 {
     protected $resultPageFactory;
     protected $resultForwardFactory;

@@ -16,7 +16,7 @@ class Severity extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
         $this->ticketFactory = $ticketFactory;
     }
 
-    public function render(\Magento\Framework\Object $row)
+    public function render(\Magento\Framework\DataObject $row)
     {
         $ticket = $this->ticketFactory->create()->load($row->getId());
 
