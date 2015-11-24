@@ -2,7 +2,7 @@
 
 namespace Foggyline\Helpdesk\Model\Resource;
 
-class Ticket extends \Magento\Framework\Model\Resource\Db\AbstractDb
+class Ticket extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * Initialize resource model

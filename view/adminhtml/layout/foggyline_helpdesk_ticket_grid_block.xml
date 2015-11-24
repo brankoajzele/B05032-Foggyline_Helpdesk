@@ -7,7 +7,7 @@
 
                 <arguments>
                     <argument name="id" xsi:type="string">ticketGrid</argument>
-                    <argument name="dataSource" xsi:type="object">Foggyline\Helpdesk\Model\Resource\Ticket\Collection</argument>
+                    <argument name="dataSource" xsi:type="object">Foggyline\Helpdesk\Model\ResourceModel\Ticket\Collection</argument>
                     <argument name="default_sort" xsi:type="string">ticket_id</argument>
                     <argument name="default_dir" xsi:type="string">desc</argument>
                     <argument name="save_parameters_in_session" xsi:type="boolean">true</argument>

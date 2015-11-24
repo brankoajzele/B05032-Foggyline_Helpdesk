@@ -28,7 +28,7 @@ class Ticket extends \Magento\Framework\Model\AbstractModel
      */
     protected function _construct()
     {
-        $this->_init('Foggyline\Helpdesk\Model\Resource\Ticket');
+        $this->_init('Foggyline\Helpdesk\Model\ResourceModel\Ticket');
     }
 
     public static function getSeveritiesOptionArray()

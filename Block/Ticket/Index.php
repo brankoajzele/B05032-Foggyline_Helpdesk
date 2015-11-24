@@ -38,7 +38,7 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * @return \Foggyline\Helpdesk\Model\Resource\Ticket\Collection
+     * @return \Foggyline\Helpdesk\Model\ResourceModel\Ticket\Collection
      */
     public function getTickets()
     {
