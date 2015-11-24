@@ -5,7 +5,7 @@ namespace Foggyline\Helpdesk\Controller\Adminhtml\Ticket;
 class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
 {
     protected $ticketFactory;
-    protected $customerSession;
+    protected $customerRepository;
     protected $transportBuilder;
     protected $inlineTranslation;
     protected $scopeConfig;
@@ -16,7 +16,7 @@ class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory,
         \Foggyline\Helpdesk\Model\TicketFactory $ticketFactory,
-        \Magento\Customer\Model\Session $customerSession,
+        \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
         \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder,
         \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
@@ -24,7 +24,7 @@ class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
     )
     {
         $this->ticketFactory = $ticketFactory;
-        $this->customerSession = $customerSession;
+        $this->customerRepository = $customerRepository;
         $this->transportBuilder = $transportBuilder;
         $this->inlineTranslation = $inlineTranslation;
         $this->scopeConfig = $scopeConfig;
@@ -43,14 +43,14 @@ class Close extends \Foggyline\Helpdesk\Controller\Adminhtml\Ticket
                 $ticket->save();
                 $this->messageManager->addSuccess(__('Ticket successfully closed.'));
 
-                /* Send email to store owner */
-                $customer = $this->customerSession->getCustomerData();
+                /* Send email to customer */
+                $customer = $this->customerRepository->getById($ticket->getCustomerId());
                 $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
                 $transport = $this->transportBuilder
                     ->setTemplateIdentifier($this->scopeConfig->getValue('foggyline_helpdesk/email_template/customer', $storeScope))
                     ->setTemplateOptions(
                         [
-                            'area' => \Magento\Framework\App\Area::AREA_ADMIN,
+                            'area' => \Magento\Framework\App\Area::AREA_ADMINHTML,
                             'store' => $this->storeManager->getStore()->getId(),
                         ]
                     )
