@@ -1,6 +1,6 @@
 <?php
 
-namespace Foggyline\Helpdesk\Model\Resource;
+namespace Foggyline\Helpdesk\Model\ResourceModel;
 
 class Ticket extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {

@@ -2,9 +2,7 @@
 
 namespace Foggyline\Helpdesk\Controller;
 
-use Magento\Framework\App\RequestInterface;
-
-class Ticket extends \Magento\Framework\App\Action\Action
+abstract class Ticket extends \Magento\Framework\App\Action\Action
 {
     /**
      * Customer session
@@ -16,6 +14,7 @@ class Ticket extends \Magento\Framework\App\Action\Action
     /**
      * @param \Magento\Framework\App\Action\Context $context
      * @param \Magento\Customer\Model\Session $customerSession
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
@@ -29,13 +28,16 @@ class Ticket extends \Magento\Framework\App\Action\Action
     /**
      * Check customer authentication for some actions
      *
-     * @param RequestInterface $request
+     * @param \Magento\Framework\App\RequestInterface $request
      * @return \Magento\Framework\App\ResponseInterface
      */
-    public function dispatch(RequestInterface $request)
+    public function dispatch(\Magento\Framework\App\RequestInterface $request)
     {
-        if (!$this->customerSession->authenticate($this)) {
+        if (!$this->customerSession->authenticate()) {
             $this->_actionFlag->set('', 'no-dispatch', true);
+            if (!$this->customerSession->getBeforeUrl()) {
+                $this->customerSession->setBeforeUrl($this->_redirect->getRefererUrl());
+            }
         }
         return parent::dispatch($request);
     }
