@@ -4,7 +4,9 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <title>Helpdesk Tickets</title>
+        <css src="" ></css>
     </head>
+
     <body>
         <referenceBlock name="customer_account_navigation">
             <block class="Magento\Framework\View\Element\Html\Link\Current" name="foggyline-helpdesk-ticket">
